@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+import TypeIt from "typeit-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Code2,
@@ -13,8 +13,9 @@ import {
   Linkedin,
   Badge,
   Send,
+  Loader2,
 } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const projects = [
   {
@@ -38,14 +39,64 @@ const projects = [
 ];
 
 export default function Home() {
+  // Form state management
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   // For scroll-based shimmer effect on timeline
   const timelineRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
     offset: ["start end", "end start"],
   });
-  // Map scroll progress (0-1) to shimmer Y position (0px to timeline height)
-  const shimmerY = useTransform(scrollYProgress, [0, 1], [0, 600]); // 600px is an estimate, adjust as needed
+  const shimmerY = useTransform(scrollYProgress, [0, 1], [0, 600]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Simulate form submission (replace with actual API call)
+     await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+          throw new Error('Failed to send message');
+        }
+      
+      setSubmitStatus('success');
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+      
+    } catch (error) {
+      setSubmitStatus('error');
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <main className="flex flex-col items-center justify-center min-h-[80vh] px-4">
       {/* Hero Section */}
@@ -61,7 +112,14 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7, ease: "easeOut" }}
         >
-          Quality code, <br className="hidden md:inline" /> every interaction
+          <TypeIt
+            options={{
+                speed: 100,
+                waitUntilVisible: true,
+                lifeLike: true,
+            }} >
+            Quality code, <br className="hidden md:inline" /> every interaction
+            </TypeIt>
         </motion.h1>
         <motion.p
           className="text-xl md:text-2xl text-[#b3b3b3] font-medium"
@@ -459,6 +517,9 @@ export default function Home() {
           I&apos;m always open to discussing new opportunities, interesting
           projects, or just having a chat about technology.
         </p>
+        
+
+
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left: Contact Info */}
           <div className="flex-1 bg-[#23232a] rounded-2xl p-8 flex flex-col gap-6 shadow border border-white/10 max-w-[400px] text-[#ededed]">
@@ -528,7 +589,7 @@ export default function Home() {
                   </a>
                 </div>
                 <a
-                  href="/resume.pdf"
+                  href="/Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-white text-black rounded-lg px-4 py-3 font-semibold shadow hover:bg-gray-200 transition"
@@ -541,35 +602,44 @@ export default function Home() {
               </div>
             </div>
           </div>
+          
           {/* Right: Contact Form */}
           <div className="flex-1 bg-[#18181b] rounded-2xl p-8 shadow border border-white/10 min-w-[450px] text-[#ededed]">
             <h3 className="text-2xl font-bold mb-4 text-white">
               Send me a message
             </h3>
-            <form className="flex flex-col gap-4">
+            <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
               <div className="flex gap-4">
-                <div className="flex-1 flex flex-col gap-1">
+                <div className="w-[35%] md:flex-1 flex flex-col gap-1">
                   <label htmlFor="name" className="font-medium text-[#b3b3b3]">
                     Name *
                   </label>
                   <input
                     id="name"
+                    name="name"
                     type="text"
-                    className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3]"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3] focus:border-[#f87171] focus:outline-none transition-colors"
                     placeholder="Your full name"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
-                <div className="flex-1 flex flex-col gap-1">
+                <div className="w-[65%] md:flex-1 flex flex-col gap-1">
                   <label htmlFor="email" className="font-medium text-[#b3b3b3]">
                     Email *
                   </label>
                   <input
                     id="email"
+                    name="email"
                     type="email"
-                    className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3]"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3] focus:border-[#f87171] focus:outline-none transition-colors"
                     placeholder="your.email@example.com"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
               </div>
@@ -579,10 +649,14 @@ export default function Home() {
                 </label>
                 <input
                   id="subject"
+                  name="subject"
                   type="text"
-                  className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3]"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="border border-white/10 rounded px-3 py-2 bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3] focus:border-[#f87171] focus:outline-none transition-colors"
                   placeholder="What's this about?"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -591,19 +665,44 @@ export default function Home() {
                 </label>
                 <textarea
                   id="message"
-                  className="border border-white/10 rounded px-3 py-2 min-h-[100px] bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3]"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="border border-white/10 rounded px-3 py-2 min-h-[100px] bg-[#23232a] text-[#ededed] placeholder:text-[#b3b3b3] focus:border-[#f87171] focus:outline-none transition-colors resize-vertical"
                   placeholder="Tell me about your project, opportunity, or just say hello!"
                   required
+                  disabled={isSubmitting}
                 />
               </div>
               <button
                 type="submit"
-                className="mt-2 flex items-center justify-center gap-2 bg-white text-black rounded-lg px-4 py-3 font-semibold shadow hover:bg-gray-200 transition w-full"
+                disabled={isSubmitting}
+                className="mt-2 flex mb-4 items-center justify-center gap-2 bg-white text-black rounded-lg px-4 py-3 font-semibold shadow hover:bg-gray-200 transition w-full disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <Send />
-                Send Message
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
+                    {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="max-w-md mx-auto mb-6 p-4 bg-green-900/20 border border-green-500 rounded-lg text-green-400 text-center">
+            ✅ Message sent successfully! I&apos;ll get back to you soon.
+          </div>
+        )}
+        {submitStatus === 'error' && (
+          <div className="max-w-md mx-auto mb-6 p-4 bg-red-900/20 border border-red-500 rounded-lg text-red-400 text-center">
+            ❌ Something went wrong. Please try again or contact me directly.
+          </div>
+        )}
           </div>
         </div>
       </motion.section>

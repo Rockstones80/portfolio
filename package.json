@@ -13,7 +13,9 @@
     "lucide-react": "^0.537.0",
     "next": "15.4.6",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "resend": "^6.0.0",
+    "typeit-react": "^2.7.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

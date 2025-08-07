@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Mail, Download } from "lucide-react";
 import "./globals.css";
+import MobileNav from "../components/MobileNav";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Uzii",
   description: "Aspiring Software Developer open to opportunities.",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +34,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#18181b] text-[#ededed] min-h-screen`}
       >
-        <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-3 bg-transparent backdrop-blur-md border-b border-white/10">
+        {/* Desktop Navigation */}
+        <nav className="fixed top-0 left-0 w-full z-50 hidden lg:flex items-center justify-between px-8 py-3 bg-transparent backdrop-blur-md border-b border-white/10">
           <div className="flex items-center gap-4 flex-1">
             <a
               href="#contact"
@@ -57,7 +64,7 @@ export default function RootLayout({
           </ul>
           <div className="flex items-center gap-4 flex-1 justify-end">
             <a
-              href="/resume.pdf"
+              href="/Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-[#18181b] text-white rounded-lg px-4 py-2 font-semibold shadow-md hover:bg-[#23232a] transition"
@@ -67,6 +74,10 @@ export default function RootLayout({
             </a>
           </div>
         </nav>
+
+        {/* Mobile Navigation */}
+        <MobileNav />
+
         <div className="pt-24">{children}</div>
       </body>
     </html>
