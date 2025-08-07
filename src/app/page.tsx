@@ -213,7 +213,8 @@ export default function Home() {
       {/* Experience & Education Timeline Section */}
       <section id="experience" className="w-full max-w-4xl mx-auto mb-20">
         <h2 className="text-3xl font-bold text-center mb-2">
-          Experience <span className="bg-gradient-to-r from-[#f87171]  bg-clip-text text-transparent">& Education</span>
+          <span className="bg-gradient-to-r from-[#f87171]  bg-clip-text text-transparent">  Experience &</span>
+          <span className="">  Education</span>
         </h2>
         <p className="text-center text-[#b3b3b3] mb-10">
           My journey in technology, from academic foundations to practical
