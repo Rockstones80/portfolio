@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Name | Frontend Developer",
-  description: "Portfolio of a frontend developer open to opportunities.",
+  title: "Uzii",
+  description: "Inspiring Software Developer open to opportunities.",
 };
 
 export default function RootLayout({
