@@ -50,7 +50,7 @@ export default function RootLayout({
               </a>
             </li>
             <li>
-              <a href="#skills" className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-[#f87171] after:transition-all after:duration-500 hover:after:w-full">
+              <a href="#experience" className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-[#f87171] after:transition-all after:duration-500 hover:after:w-full">
                 Experience
               </a>
             </li>

@@ -55,3 +55,9 @@ body::before {
 html {
   scroll-behavior: smooth;
 }
+
+html {
+  scroll-padding-top: 6rem; /* Matches your navbar height */
+}
+
+/* Alternative: target specific sections */

@@ -147,7 +147,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <motion.section
-        id="skills"
+        id=""
         className="w-full max-w-4xl mb-20"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -211,7 +211,7 @@ export default function Home() {
       </motion.section>
 
       {/* Experience & Education Timeline Section */}
-      <section id="timeline" className="w-full max-w-4xl mx-auto mb-20">
+      <section id="experience" className="w-full max-w-4xl mx-auto mb-20">
         <h2 className="text-3xl font-bold text-center mb-2">
           Experience <span className="bg-gradient-to-r from-[#f87171]  bg-clip-text text-transparent">& Education</span>
         </h2>
@@ -240,7 +240,7 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h3 className="font-semibold text-lg mb-1">
-                  Frontend Developer Intern
+                  Frontend Developer
                 </h3>
                 <div className="flex items-center text-sm text-[#b3b3b3] mb-2 gap-2">
                   <span className="flex items-center gap-1">
@@ -377,7 +377,7 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h3 className="font-semibold text-lg mb-1">
-                  Bachelor of Computer Engineering
+                  BEng, Computer Engineering
                 </h3>
                 <div className="flex items-center text-sm text-[#b3b3b3] mb-2 gap-2">
                   <span className="flex items-center gap-1">
