@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Uzii",
-  description: "Inspiring Software Developer open to opportunities.",
+  description: "Aspiring Software Developer open to opportunities.",
 };
 
 export default function RootLayout({
@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#18181b] text-[#ededed] min-h-screen`}
       >
-        <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-5 bg-transparent backdrop-blur-md border-b border-white/10">
+        <nav className="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-3 bg-transparent backdrop-blur-md border-b border-white/10">
           <div className="flex items-center gap-4 flex-1">
             <a
               href="#contact"
