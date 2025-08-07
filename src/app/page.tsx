@@ -240,7 +240,7 @@ export default function Home() {
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h3 className="font-semibold text-lg mb-1">
-                  Frontend Developer
+                  Fullstack Developer
                 </h3>
                 <div className="flex items-center text-sm text-[#b3b3b3] mb-2 gap-2">
                   <span className="flex items-center gap-1">
