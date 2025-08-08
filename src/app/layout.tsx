@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Uzii",
-  description: "Aspiring Software Developer open to opportunities.",
+  description: "A Software Developer open to opportunities.",
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
