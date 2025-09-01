@@ -19,22 +19,22 @@ import { useRef, useState } from "react";
 
 const projects = [
   {
-    title: "Portfolio Website",
+    title: "InvestNaira",
     description:
-      "A personal portfolio to showcase my work, skills, and experience. Built with Next.js and Tailwind CSS.",
-    link: "#",
+      "This is a website for a fintech startup to showcase their investment platform solution, offering users seamless access to diverse investment opportunities with real-time portfolio tracking and comprehensive financial analytics.",
+    link: "https://investnaira-frontend-xe3j.vercel.app/",
   },
   {
-    title: "E-commerce UI Kit",
+    title: "KageArchvs",
     description:
-      "A modern, responsive e-commerce UI kit with product listings, cart, and checkout flows.",
-    link: "#",
+      "This is a website for a fashion and creative mastermind, featuring an elegant showcase of artistic vision, curated collections, and innovative design concepts that push the boundaries of contemporary fashion.",
+    link: "https://kagearchvs.xyz/",
   },
   {
-    title: "Chat App Demo",
+    title: "Finable",
     description:
-      "A real-time chat application demo using React, Socket.io, and Framer Motion for smooth animations.",
-    link: "#",
+      "This is a crowdfunding platform that connects innovative entrepreneurs with potential investors, providing a secure and user-friendly environment for funding breakthrough projects and startups.",
+    link: "https://finable-hq-coral.vercel.app/",
   },
 ];
 
@@ -130,7 +130,7 @@ export default function Home() {
         >
           Hi, I&apos;m{" "}
           <span className="text-white font-semibold">Samuel Uzor</span> — a
-          frontend developer in my final year, passionate about building
+          Frontend developer and Web designer, passionate about building
           beautiful web experiences. <br />
           <span className="text-[#f87171] font-semibold">
             Open to job opportunities!
@@ -157,17 +157,15 @@ export default function Home() {
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <h2 className="text-3xl font-bold mb-4">About Me</h2>
-        <p className="text-lg text-[#b3b3b3]">
-          I&apos;m currently in my final year of computer engineering, where
-          I&apos;ve developed a deep passion for frontend development and
-          building scalable web applications. My journey started with curiosity
-          about how websites work, and has evolved into expertise in modern web
-          technologies. <br /> I specialize in creating responsive,
-          user-friendly interfaces using React, TypeScript, and modern CSS
-          frameworks, particularly interested in performance optimization,
-          accessibility, and creating seamless user experiences. Currently
-          seeking opportunities to contribute to innovative projects and
-          collaborate with talented teams in the tech industry.
+        <p className="text-lg text-[#b3b3b3] text-justify">
+          I&apos;m a software engineer with a computer engineering background, specializing in 
+          frontend development and modern web architecture. My expertise spans across JavaScript 
+          ecosystems, from React and Next.js to TypeScript and state management solutions. 
+          <br /> I focus on building performant, scalable applications with clean code architecture, 
+          implementing responsive designs, optimizing bundle sizes, and ensuring accessibility 
+          standards. My passion lies in crafting pixel-perfect interfaces and optimizing user interactions 
+          while maintaining robust, maintainable codebases. Currently seeking 
+          opportunities to contribute to cutting-edge projects and work with innovative development teams.
         </p>
       </motion.section>
 
@@ -192,7 +190,7 @@ export default function Home() {
               transition={{ delay: 0.1 * idx, duration: 0.6, ease: "easeOut" }}
             >
               <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-              <p className="text-[#b3b3b3] mb-2">{project.description}</p>
+              <p className="text-[#b3b3b3] mb-2 text-justify">{project.description}</p>
               <a
                 href={project.link}
                 className="text-[#f87171] font-medium hover:underline"
@@ -451,7 +449,7 @@ export default function Home() {
                         <rect x="2" y="2" width="12" height="12" rx="2" />
                       </svg>
                     </span>
-                    Convenant University
+                    Covenant University
                   </span>
                   <span>•</span>
                   <span className="flex items-center gap-1">
@@ -590,7 +588,7 @@ export default function Home() {
                   </a>
                 </div>
                 <a
-                  href="/Resume.pdf"
+                  href="/resumess.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-white text-black rounded-lg px-4 py-3 font-semibold shadow hover:bg-gray-200 transition"

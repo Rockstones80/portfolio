@@ -64,7 +64,7 @@ export default function RootLayout({
           </ul>
           <div className="flex items-center gap-4 flex-1 justify-end">
             <a
-              href="/Resume.pdf"
+              href="/resumess.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 bg-[#18181b] text-white rounded-lg px-4 py-2 font-semibold shadow-md hover:bg-[#23232a] transition"
